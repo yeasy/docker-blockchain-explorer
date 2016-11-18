@@ -6,18 +6,16 @@
 # HYP_REST_ENDPOINT=<REST endpoint. Default is http://127.0.0.1:7050 if not set>
 
 
-FROM node:7.1.0-slim
+FROM node:6-wheezy
 MAINTAINER Baohua Yang
 
 ENV DEBIAN_FRONTEND noninteractive
 
+#RUN apt-get update \
+#        && apt-get install -y git npm \
+#        && rm -rf /var/cache/apt
 
-RUN apt-get update \
-        && apt-get install -y git npm \
-        && rm -rf /var/cache/apt
-
-RUN npm install npm bower grunt-cli graceful-fs@4.1.5 minimatch@3.0.2 -g
-
+RUN npm install bower grunt-cli graceful-fs@4.1.5 minimatch@3.0.2 -g
 
 # clone latest code from github
 RUN git clone https://github.com/hyperledger/blockchain-explorer
