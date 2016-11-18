@@ -22,6 +22,9 @@ RUN git clone https://github.com/hyperledger/blockchain-explorer
 
 WORKDIR /blockchain-explorer/explorer_1
 
+#RUN echo '{ "allow_root": true }' > /root/.bowerrc
+RUN echo '{ "allow_root": true }' > .bowerrc
+
 RUN npm install grunt grunt-auto-install grunt-contrib-uglify grunt-contrib-copy && \
     grunt
 

@@ -31,14 +31,18 @@ The easiest way to start a explorer is just run
 $ docker run -d yeasy/blockchain-explorer
 ```
 
-It will listen on `:9090`, and try connect to `127.0.0.1:7050` as the hyperledger fabric rest api url.
+It will listen on `<container>:9090`, and try connect to `127.0.0.1:7050` as the hyperledger fabric rest api url.
 
 ### With configuration
 
-However this will not connect to an existing chain.
+Environment variables are supported:
 
-E.g., see the supported sub commands with the `help` command.
+* HTTP_PORT=<web server port. Default is 9090 if not set>
+* HYP_REST_ENDPOINT=<REST endpoint. Default is http://127.0.0.1:7050 if not set>
+
+
 ```sh
+$ docker run -p 9090:9090 -e HYP_REST_ENDPOINT=http://172.17.0.2:7050 yeasy/blockchain-explorer
 ```
 
 # Which image is based on?
