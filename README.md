@@ -8,7 +8,7 @@ Docker images for [Hyperledger Blockchain Explorer](https://github.com/hyperledg
 
 For more information about this image and its history, please see the relevant manifest file in the [`yeasy/docker-blockchain-explorer` GitHub repo](https://github.com/yeasy/docker-blockchain-explorer).
 
-If you want to quickly deploy a local cluster without any configuration and vagrant, please refer to [Start hyperledger clsuter using compose](https://github.com/yeasy/docker-compose-files#hyperledger).
+If you want to quickly deploy a local cluster with explorer enabled, please refer to [Start hyperledger cluster using Compose](https://github.com/yeasy/docker-compose-files#hyperledger).
 
 # What is docker-blockchain-explorer?
 Docker image with an web-UI explorer for a running hyperledger chain.
@@ -40,13 +40,14 @@ Environment variables are supported:
 * HTTP_PORT=<web server port. Default is 9090 if not set>
 * HYP_REST_ENDPOINT=<REST endpoint. Default is http://127.0.0.1:7050 if not set>
 
+E.g., suppose the hyperledger rest api url is `http://172.17.0.2:7050`.
 
 ```sh
 $ docker run -p 9090:9090 -e HYP_REST_ENDPOINT=http://172.17.0.2:7050 yeasy/blockchain-explorer
 ```
 
 # Which image is based on?
-The image is built based on [Node:7.1.0-slim](https://hub.docker.com/r/library/node/) base image.
+The image is built based on [node:6-wheezy](https://hub.docker.com/r/library/node/) base image.
 
 # What has been changed?
 ## Install dependencies
@@ -70,15 +71,9 @@ $ grunt
 $ node exp-server.js
 ```
 
-## install rocksdb
-Install required  rocksdb 4.1.
-
-## install hyperledger
-Install hyperledger and build the peer 
-
 # Supported Docker versions
 
-This image is officially supported on Docker version 1.7.0.
+This image is officially supported on Docker version 1.9.0+.
 
 Support for older versions (down to 1.0) is provided on a best-effort basis.
 
