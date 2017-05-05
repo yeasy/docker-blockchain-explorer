@@ -5,18 +5,17 @@
 # HYP_REST_ENDPOINT=<REST endpoint. Default is http://127.0.0.1:7050 if not set>
 
 FROM node:6-wheezy
-MAINTAINER Baohua Yang
+LABEL maintainer Baohua Yang
 
 # install maintain tools
-RUN npm install bower grunt-cli graceful-fs@4.1.5 minimatch@3.0.2 -g
+RUN npm install bower grunt-cli graceful-fs@4.1.5 minimatch@3.0.2 -g && mkdir /blockchain-explorer && chown node /blockchain-explorer
+
+USER node
 
 # clone latest code from github
 RUN git clone https://github.com/hyperledger/blockchain-explorer
 
 WORKDIR /blockchain-explorer/explorer_1
-
-#RUN echo '{ "allow_root": true }' > /root/.bowerrc
-RUN echo '{ "allow_root": true }' > .bowerrc
 
 RUN npm install grunt grunt-auto-install grunt-contrib-uglify grunt-contrib-copy && \
     grunt
