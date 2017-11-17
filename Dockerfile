@@ -8,7 +8,6 @@ FROM node:6-wheezy
 MAINTAINER Baohua Yang <yeasy.github.com>
 
 EXPOSE 8080
-VOLUME /blockchain-explorer
 
 # install maintain tools
 #RUN npm install bower grunt-cli graceful-fs@4.1.5 minimatch@3.0.2 -g
@@ -25,5 +24,7 @@ RUN echo '{ "allow_root": true }' > .bowerrc
 # Or just mount external one inside
 
 RUN npm install
+
+VOLUME /blockchain-explorer
 
 CMD ["bash", "start.sh"]
