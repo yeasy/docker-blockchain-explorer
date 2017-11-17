@@ -8,12 +8,13 @@ FROM node:6-wheezy
 MAINTAINER Baohua Yang <yeasy.github.com>
 
 EXPOSE 8080
+VOLUME /blockchain-explorer
 
 # install maintain tools
 #RUN npm install bower grunt-cli graceful-fs@4.1.5 minimatch@3.0.2 -g
 
 # clone latest code from github
-RUN git clone https://github.com/hyperledger/blockchain-explorer
+RUN git clone --single-branch -b master --depth 1 https://github.com/hyperledger/blockchain-explorer
 
 WORKDIR /blockchain-explorer
 
